@@ -1,0 +1,10 @@
+
+{
+  "name": "com.gk.netmon",
+  "description": "Chrome Native Messaging API Example Host",
+  "path": "native-messaging-example-host.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
+  ]
+}

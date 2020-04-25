@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+ * Copyright 2013 The Chromium Authors. All rights reserved.  Use of this
+ * source code is governed by a BSD-style license that can be found in the
+ * LICENSE file.
+-->
+
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src='./main.js'></script>
+  </head>
+  <body>
+    <h3 style="text-align:center">Network Monitor</h3>
+    <div style ="float: left;font-size: 14px;">Download : 
+      <b id='down'></b> 
+        Kbps
+    </div>
+
+    <div style ="float: right;font-size: 14px;">Upload : 
+      <b id='up'></b> 
+        Kbps
+    </div>
+
+    <br>
+    <br>
+    <div class="container">
+      <canvas id="myChart"></canvas>
+  </div>
+  </body>
+</html>
