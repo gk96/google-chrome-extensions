@@ -1,0 +1,11 @@
+
+
+{
+  "name": "com.gk.netmon",
+  "description": "Chrome Native Messaging API Example Host",
+  "path": "/etc/opt/chrome/native-messaging-hosts/network-monitor/network_monitor.sh",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
+  ]
+}
