@@ -7,6 +7,17 @@ var download ;
 var myChart = null;
 var time = 0;
 
+// Reset WindowId to -1 on each reload
+chrome.runtime.onInstalled.addListener(function (){
+chrome.storage.sync.set({
+  "windowId": -1,
+}, function() {
+// Update status to let user know options were saved.
+  console.log("option saved!!");
+});
+
+});
+
 var getKeys = function(obj){
    var keys = [];
    for(var key in obj){
