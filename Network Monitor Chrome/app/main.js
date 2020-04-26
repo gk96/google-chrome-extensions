@@ -91,10 +91,16 @@ function onNativeMessage(message) {
   });
   //Setting the Badge of Extension to whichever speed is greater
   if(speeds[1] >= speeds[0])
+  {
     chrome.browserAction.setBadgeText({text: '\u2193' +speeds[1]});
+    chrome.browserAction.setBadgeBackgroundColor({ color: "#FF0000"});
+  }
 
   else
+  {
     chrome.browserAction.setBadgeText({text: '\u2191' +speeds[0]});
+    chrome.browserAction.setBadgeBackgroundColor({ color: "#2d862d"});
+  }
 
 }
 
