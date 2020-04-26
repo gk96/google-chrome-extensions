@@ -1,9 +1,7 @@
-// Copyright 2013 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// Copyright 2020 Gautham K. All rights reserved.
+
 
 var port = null;
-// var port = chrome.runtime.connectNative('com.google.chrome.example.echo');
 var upload ;
 var download ;
 var myChart = null;
@@ -17,10 +15,57 @@ var getKeys = function(obj){
    return keys;
 }
 
+// Display as Popup or tabbed window
+chrome.browserAction.onClicked.addListener(function() { 
+
+  chrome.storage.sync.get("option", function (obj) {      
+    if(obj.option == "0")
+    {
+      chrome.storage.sync.get("windowId", function (obj) {
+        if (obj.windowId == undefined || obj.windowId == -1 )
+        {
+          console.log("inside pop");
+          chrome.windows.create({url: "main.html", type: "popup"}, function(window){
+            // Change Status on popup close
+            chrome.windows.onRemoved.addListener(function(windowid){
+              console.log(windowid);
+              chrome.storage.sync.get("windowId", function (obj) {      
+              if(obj.windowId == windowid)
+              { // Clearing Window in Stroage
+                chrome.storage.sync.set({
+                  "windowId": -1,
+                }, function() {
+              // Update status to let user know options were saved.
+                console.log("option saved!!");
+                });
+              }
+            });
+        
+            }); 
+            chrome.storage.sync.set({
+              "windowId": window.id,
+            }, function() {
+            // Update status to let user know options were saved.
+              console.log("option saved!!");
+            });
+          }); 
+        }
+      });   
+    }
+    else
+    {
+      chrome.browserAction.setPopup({
+        popup: 'main.html'
+    });
+    }
+  });
+});
+
+
 function onNativeMessage(message) {
   
   var speeds = message.text.split(" ");
-  console.log(speeds);
+  //console.log(speeds);
   if(document.getElementById('up') != null ||  document.getElementById('down') != null)
   {
     document.getElementById('down').innerText = speeds[1] ;
@@ -45,7 +90,7 @@ function onNativeMessage(message) {
     title:'Speed Meter \n\nDownload : ' + speeds[1] + ' Kbps\nUpload : ' + speeds[0] +' Kbps'
   });
   //Setting the Badge of Extension to whichever speed is greater
-  if(speeds[1] > speeds[0])
+  if(speeds[1] >= speeds[0])
     chrome.browserAction.setBadgeText({text: '\u2193' +speeds[1]});
 
   else
@@ -134,5 +179,7 @@ function renderChart(uploadData, downloadData) {
   });
 }
 
+
 // Starting of the Connection
 connect();
+
