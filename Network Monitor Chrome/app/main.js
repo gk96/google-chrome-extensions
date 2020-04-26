@@ -68,8 +68,26 @@ function onNativeMessage(message) {
   //console.log(speeds);
   if(document.getElementById('up') != null ||  document.getElementById('down') != null)
   {
-    document.getElementById('down').innerText = speeds[1] ;
-    document.getElementById('up').innerHTML = speeds[0] ;
+    chrome.storage.sync.get("speed", function (obj) {
+      // Speed Unit Change Checking
+      if(obj.speed == "1")
+      {
+        speeds[0]/=1024*8;
+        speeds[1]/=1024*8;
+        document.getElementById('down').innerText = speeds[1] ;
+        document.getElementById('up').innerHTML = speeds[0] ;
+        document.getElementById('speedUp').innerHTML = '<b id ="speedUp">Mbps</b>' ;
+        document.getElementById('speedDown').innerHTML = '<b id ="speedDown">Mbps</b>' ;
+      }
+      else
+      {
+        document.getElementById('down').innerText = speeds[1] ;
+        document.getElementById('up').innerHTML = speeds[0] ;
+        document.getElementById('speedUp').innerHTML = '<b id ="speedUp">Kbps</b>' ;
+        document.getElementById('speedDown').innerHTML = '<b id ="speedDown">Kbps</b>' ;
+      }
+    });
+    
   
     time = time + 1;
     upload = {x : time, y: speeds[0]};
