@@ -31,8 +31,5 @@ def send_stat(up, down):
     sys.stdout.buffer.write(encodedMessage['length'])
     sys.stdout.write(encodedMessage['content'])
     sys.stdout.flush()
-    #sys.stdout.write(struct.pack('I', len(text)))
-    # Write the message itself.
-    #sys.stdout.write(text)
-    #sys.stdout.flush()
+
 main()

@@ -1,7 +1,7 @@
 {
-  "name": "com.gk.netmon",
+  "name": "com.gk.netstat",
   "description": "Chrome Native Messaging API Example Host",
-  "path": "start_network_monitor.bat",
+  "path": "/etc/opt/chrome/native-messaging-hosts/network-monitor/netstat.sh",
   "type": "stdio",
   "allowed_origins": [
     "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"

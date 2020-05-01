@@ -4,6 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src='./main.js'></script>
+    <script src='./netstat.js'></script>
     <title>Network Monitor</title>
   </head>
   <body>
@@ -21,7 +22,21 @@
     <br>
     <br>
     <div class="container">
-      <canvas id="myChart"></canvas>
-  </div>
+      <canvas id="myChart" style="height: 10%;"></canvas>
+    </div>
+
+    <div class="container">
+      <table id = "networkActivity" border ="1" style="width: 100%;">
+        <thead>
+          <th>Process Id</th>
+          <th>Program Name</th>
+          <th>Local Address</th>
+          <th>Remote Address</th>
+          <th>Protocol</th>
+          <th>Status</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </body>
 </html>

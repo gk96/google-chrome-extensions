@@ -1,18 +1,20 @@
 // Copyright 2020 Gautham K. All rights reserved.
 
+// --------------------- Background Script for Network Monitor ------------------------------
 
 var port = null;
-var upload ;
-var download ;
-var myChart = null;
-var time = 0;
+var upload ; // Upload Speed
+var download ; // Download Speed
+var myChart = null; // Chart Canvas
+var time = 0; // Time Keeper
 
 // Reset WindowId to -1 on each reload
 chrome.runtime.onInstalled.addListener(function (){
 chrome.storage.sync.set({
+  "option": 0,
   "windowId": -1,
 }, function() {
-// Update status to let user know options were saved.
+// Update status to let user know options were saved. TODO: Remove After Merge to master
   console.log("option saved!!");
 });
 
@@ -46,7 +48,7 @@ chrome.browserAction.onClicked.addListener(function() {
                 chrome.storage.sync.set({
                   "windowId": -1,
                 }, function() {
-              // Update status to let user know options were saved.
+              // Update status to let user know options were saved. TODO: Remove After Merge to master
                 console.log("option saved!!");
                 });
               }
@@ -56,7 +58,7 @@ chrome.browserAction.onClicked.addListener(function() {
             chrome.storage.sync.set({
               "windowId": window.id,
             }, function() {
-            // Update status to let user know options were saved.
+            // Update status to let user know options were saved. TODO: Remove After Merge to master
               console.log("option saved!!");
             });
           }); 
