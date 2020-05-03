@@ -1,9 +1,6 @@
+@echo on
 :: Python3 Modules Installation
 pip install psutil
-
-
-
-
 
 :: Moving All the files necessary
 mkdir %USERPROFILE%\AppData\Local\Programs\NetworkMonitorNative
@@ -27,5 +24,7 @@ copy "%~dp0start_netstat.bat" %USERPROFILE%\AppData\Local\Programs\NetworkMonito
 :: Adding to Registry
 cd %USERPROFILE%\AppData\Local\Programs\NetworkMonitorNative
 install_host.bat
+
+echo Installed Sucessfull !!!!!
 
 

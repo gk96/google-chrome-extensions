@@ -138,6 +138,7 @@ function onNativeMessage(message) {
 function onDisconnected() {
   console.log("Failed to connect: " + chrome.runtime.lastError.message);
   port = null;
+  connect();
 }
 
 
