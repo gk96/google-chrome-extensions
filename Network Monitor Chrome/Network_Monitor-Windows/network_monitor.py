@@ -20,7 +20,7 @@ def main():
         time.sleep(1)
 
 def convert_to_gbit(up, down):
-    return up/1024.*8, down/1024.*8
+    return up/(1024), down/(1024)
 
 def send_stat(up, down):
     up, down = convert_to_gbit(up,down)
